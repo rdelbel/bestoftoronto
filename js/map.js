@@ -27,24 +27,24 @@ $(document).ready(function(){
 
 		//Start geolocation
 		
-		if (navigator.geolocation) {    
+		// if (navigator.geolocation) {    
 		
-			function error(err) {
-				console.warn('ERROR(' + err.code + '): ' + err.message);
-			}
+		// 	function error(err) {
+		// 		console.warn('ERROR(' + err.code + '): ' + err.message);
+		// 	}
 			
-			function success(pos){
-				userCords = pos.coords;
+		// 	function success(pos){
+		// 		userCords = pos.coords;
 				
-				//return userCords;
-			}
+		// 		//return userCords;
+		// 	}
 		
-			// Get the user's current position
-			navigator.geolocation.getCurrentPosition(success, error);
-			//console.log(pos.latitude + " " + pos.longitude);
-			} else {
-				alert('Geolocation is not supported in your browser');
-			}
+		// 	// Get the user's current position
+		// 	navigator.geolocation.getCurrentPosition(success, error);
+		// 	//console.log(pos.latitude + " " + pos.longitude);
+		// 	} else {
+		// 		alert('Geolocation is not supported in your browser');
+		// 	}
 		
 		//End Geo location
 
