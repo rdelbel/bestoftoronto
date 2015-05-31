@@ -123,7 +123,7 @@ function codeAddress() {
       
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
-      var userLatLon=postalCodes[userPostalCode]
+      // var userLatLon=postalCodes[userPostalCode]
     }
 
 
@@ -350,20 +350,20 @@ return false;// important: prevent form from submitting
 })(); 
 
 	
- postalCodes = (function () {
-    var json = null;
-    $.ajax({
-        'async': false,
-        'global': false,
-        // 'url': '/2tweets.json',
-        'url': '/data/postalCodes.json',
-        'dataType': "json",
-        'success': function (data) {
-            json = data;
-        }
-    });
-    return json;
-})(); 
+//  postalCodes = (function () {
+//     var json = null;
+//     $.ajax({
+//         'async': false,
+//         'global': false,
+//         // 'url': '/2tweets.json',
+//         'url': '/data/postalCodes.json',
+//         'dataType': "json",
+//         'success': function (data) {
+//             json = data;
+//         }
+//     });
+//     return json;
+// })(); 
 
 // console.log(json)
 
