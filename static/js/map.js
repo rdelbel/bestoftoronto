@@ -8,23 +8,6 @@ $(document).ready(function(){
 	var tempMarkerHolder = []
 
 
-	//function from github for greatcircle distance
-
-
-     function distance(lat1, lon1, lat2, lon2) {
-        lat1 *= Math.PI / 180;
-        lon1 *= Math.PI / 180;
-        lat2 *= Math.PI / 180;
-        lon2 *= Math.PI / 180;
-        var lonDelta = lon2 - lon1;
-        var a = Math.pow(Math.cos(lat2) * Math.sin(lonDelta) , 2) + Math.pow(Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(lonDelta) , 2);
-        var b = Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lonDelta);
-        var angle = Math.atan2(Math.sqrt(a) , b);
-		return angle * 6371.009;
-    }
-
-
-
 		//Start geolocation
 		
 		// if (navigator.geolocation) {    
@@ -94,115 +77,15 @@ function codeAddress() {
 
 
 
-	$('#chooseZip').submit(function(){ //bind function to submit event of form
-
-		//delete old markers
-		for (var i = 0; i < tempMarkerHolder.length; i++ ) {
-    		tempMarkerHolder[i].setMap(null);
-  		}
-  		tempMarkerHolder.length = 0;
 
 
-  		allLatlng=[]
+function update_map(closestPlaces,userLatLon){
 
-
-		var userPostalCode = $("#textZip").val();
-		console.log(places)
-		console.log(userPostalCode)
-
-		var geocoder = new google.maps.Geocoder();
-	
-
-	geocoder.geocode( { 'address': userPostalCode, 'region':'ca'}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-
-    	var userLatLon={'lat':results[0].geometry.location.A ,
-    					'lon': results[0].geometry.location.F 
-    				};	
-     
-      
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-      // var userLatLon=postalCodes[userPostalCode]
-    }
-
-
-
-
-
-
-//find the closest places
-
-		var closestPlaces = []
-		i=0
-		while (closestPlaces.length<5){
-			if( places[i].number==1 && places[i].food=='food' ){
-				closestPlaces.push(places[i])
-				closestPlaces[closestPlaces.length-1].distance=distance(userLatLon.lat,userLatLon.lon,
-					places[i].latitude, places[i].longitude);
-			}
-			i++
-
-		}
-
-		//console.log(closestPlaces)
-
-
-		maxPlaceDistance={
-				distance:closestPlaces[0].distance
-				,index:0
-			};
-
-			
-		for (i; i<places.length; i++){
-			
-			if(places[i].number==1 && places[i].food=='food'){
-			//	console.log('places '+ i)
-
-			maxPlaceDistance.distance=closestPlaces[0].distance;
-			maxPlaceDistance.index=0;
-			
-
-				for(j=0;j<closestPlaces.length;j++){
-					placeDistance=closestPlaces[j].distance;
-					if(placeDistance>maxPlaceDistance.distance){
-						maxPlaceDistance.distance=placeDistance;
-						maxPlaceDistance.index=j;
-					}
-				}
-
-				placeDistance=distance(userLatLon.lat,userLatLon.lon, places[i].latitude,
-				 places[i].longitude);
-			//console.log('prev max:' +  maxPlaceDistance.distance + ' current: ' + placeDistance)
-				if(placeDistance<maxPlaceDistance.distance){
-					//console.log('new top 10!')
-					//console.log(closestPlaces[maxPlaceDistance.index]);
-					// console.log(places[i]);
-
-					closestPlaces[maxPlaceDistance.index]=places[i];
-					
-
-					closestPlaces[maxPlaceDistance.index].distance=placeDistance;
-					//console.log(closestPlaces[maxPlaceDistance.index]);
-				}
-			}
-		}
-
-
-		
-//end find the closest places
-
-
-
-//for each closest place plot it
-		for (i=0; i< closestPlaces.length;i++){
+	for (i=0; i< closestPlaces.length;i++){
 		theClosestPlace=closestPlaces[i]
 		//console.log(theClosestPlace);
 
-	
-
-
-		myLatLng =  new google.maps.LatLng(theClosestPlace.latitude,theClosestPlace.longitude);
+		myLatLng =  new google.maps.LatLng(theClosestPlace.lat,theClosestPlace.lng);
 
 		// console.log(myLatLng)
 
@@ -212,17 +95,17 @@ function codeAddress() {
 			,title:theClosestPlace.name
 			,html:
 					'<div class="markerPop">' +
-					'<h1>' + theClosestPlace.name +'</h1>' +
-					'<h3>' + theClosestPlace.address + ' (' +
+					'<h1>' + theClosestPlace.result.name +'</h1>' +
+					'<h3>' + theClosestPlace.result.address + ' (' +
 					 theClosestPlace.distance.toFixed(2) + 'KM) </h3>' +
 
-					'<h3>' + theClosestPlace.list_name +'</h3>' +
+					'<h3>' + theClosestPlace.result.list_name +'</h3>' +
 					
-					'<p>' + theClosestPlace.description + '</p>' +
-					'<p>' + theClosestPlace.website +'</p>' +
+					'<p>' + theClosestPlace.result.description + '</p>' +
+					'<p>' + theClosestPlace.result.website +'</p>' +
 					'</div>'
 		});
-		console.log(allMarkers)
+		//console.log(allMarkers)
 
 		//put all lat long in array
 		allLatlng.push(myLatLng);
@@ -242,7 +125,7 @@ function codeAddress() {
 		allMarkers = new google.maps.Marker({
 			position:myLatLng
 			,map:map
-			,title:theClosestPlace.name
+			,title:theClosestPlace.result.name
 			,html:
 					'<div class="markerPop">' +
 					'<h1>Your Location</h1>' +
@@ -250,31 +133,13 @@ function codeAddress() {
 					'</div>'
 		});
 
-		console.log(allMarkers)
+		//console.log(allMarkers)
 
 		//put all lat long in array
 		allLatlng.push(myLatLng);
 								
 		//Put the marketrs in an array
 		tempMarkerHolder.push(allMarkers);
-
-
-
-
-
-
-
-
-
-
-
-
-
-	console.log(closestPlaces)
-
-
-
-
 
 
 
@@ -286,7 +151,7 @@ function codeAddress() {
 				infowindow.setContent(this.html);
 				infowindow.open(map,this);
 			});
-	}
+	 }
 
 
 
@@ -303,14 +168,71 @@ function codeAddress() {
 		///fit bounds to the map
 
 		map.fitBounds(bounds);
-			
 		
 
-		
-	});
+}
 
 
 
+
+	$('#chooseZip').submit(function(){ //bind function to submit event of form
+
+		//delete old markers
+		for (var i = 0; i < tempMarkerHolder.length; i++ ) {
+    		tempMarkerHolder[i].setMap(null);
+  		}
+  		tempMarkerHolder.length = 0;
+
+
+  		allLatlng=[]
+
+
+		var userPostalCode = $("#textZip").val();
+		//console.log(places)
+		console.log('User input',userPostalCode)
+
+		var geocoder = new google.maps.Geocoder();
+	
+
+	geocoder.geocode( { 'address': userPostalCode, 'region':'ca'}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+
+    	var userLatLon={'lat':results[0].geometry.location.A ,
+    					'lon': results[0].geometry.location.F 
+    				};	
+     
+      
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+      // var userLatLon=postalCodes[userPostalCode]
+    }
+
+    console.log('userLatLon', userLatLon)
+    console.log('stringify userLatLon', JSON.stringify(userLatLon,null,'\t'))
+
+
+
+
+    $.ajax({
+    	type:"POST",
+    	url:"/",
+    	data:JSON.stringify(userLatLon,null,'\t'),
+    	contentType: 'application/json;charset=UTF-8',
+    	success: function(closestPlaces) {
+        console.log(closestPlaces);
+        update_map(closestPlaces.json_list,userLatLon)
+
+    }
+});
+
+
+    }
+    );
+
+  
+
+
+ 
 
 
 
@@ -330,41 +252,5 @@ return false;// important: prevent form from submitting
   });
 
 
-
-		
-
-	
- places = (function () {
-    var json = null;
-    $.ajax({
-        'async': false,
-        'global': false,
-        // 'url': '/2tweets.json',
-        'url':  '/static/data.json',
-        'dataType': "json",
-        'success': function (data) {
-            json = data;
-        }
-    });
-    return json;
-})(); 
-
-	
-//  postalCodes = (function () {
-//     var json = null;
-//     $.ajax({
-//         'async': false,
-//         'global': false,
-//         // 'url': '/2tweets.json',
-//         'url': '/data/postalCodes.json',
-//         'dataType': "json",
-//         'success': function (data) {
-//             json = data;
-//         }
-//     });
-//     return json;
-// })(); 
-
-// console.log(json)
 
 });
