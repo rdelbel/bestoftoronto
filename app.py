@@ -5,7 +5,7 @@ import os
 import requests
 import json
 # from models import Result
-from models import *
+# from models import Result
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
