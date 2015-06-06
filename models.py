@@ -1,4 +1,4 @@
-from app import db
+from database import db
 from sqlalchemy.dialects.postgresql import JSON, REAL, INTEGER
 from sqlalchemy import func, Index
 

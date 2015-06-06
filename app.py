@@ -5,11 +5,14 @@ import os
 import requests
 import json
 # from models import Result
-from models import *
+from database import db
+from models import Result
+# from models import *
 
 app = Flask(__name__)
+db.init_app(app)
+
 app.config.from_object(os.environ['APP_SETTINGS'])
-db = SQLAlchemy(app)
 
 # from models import Result
 
