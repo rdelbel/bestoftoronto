@@ -99,9 +99,9 @@ ul li{
 		height: 100%;
 	}
 	#control{
-		float: left;
+		/*float: left;*/
 		color: #D8D8DD;
-		width: 15%;
+		width: 100%;
 		padding: 50px 30px 10px 30px;
 		border-right: 1px solid black;
 	}
