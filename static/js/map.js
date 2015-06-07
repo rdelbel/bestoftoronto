@@ -41,7 +41,7 @@ $(document).ready(function(){
 		panControlOptions:{
 			position:google.maps.ControlPosition.BOTTOM_LEFT
 		},
-		zoomControl:true,
+		zoomControl:false,
 		zoomControlOptions:{
 			style: google.maps.ZoomControlStyle.LARGE,
 			position: google.maps.ControlPosition.RIGHT_CENTER
