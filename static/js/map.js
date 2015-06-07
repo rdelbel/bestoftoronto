@@ -97,7 +97,7 @@ function update_map(closestPlaces,userLatLon){
 					'<div class="markerPop">' +
 					'<h1>' + theClosestPlace.result.name +'</h1>' +
 					'<h3>' + theClosestPlace.result.address + ' (' +
-					 theClosestPlace.distance.toFixed(2) + 'KM) </h3>' +
+					 (theClosestPlace.distance/1000).toFixed(2) + 'KM) </h3>' +
 
 					'<h3>' + theClosestPlace.result.list_name +'</h3>' +
 					
