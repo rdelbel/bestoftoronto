@@ -38,7 +38,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin-bottom: 17px;
+	margin-bottom: 10px;
 	font-weight: 300;
 	/* color: #ff5400; */
 }
@@ -110,7 +110,7 @@ ul li{
 
 	#control input[type=text]{
 		width: 100%;
-		height: 40px;
+		height: 30px;
 		font-size: 24px;
 		background-color: #6B7283;
 		border: 1px solid #BE757E;
@@ -118,13 +118,13 @@ ul li{
 	
 	.learnButton {
 		display: inline-block;
-		margin-top: 10px;
+		margin-top: 5px;
 		/*margin-bottom: 20px;*/
 		background: #BE757E;
 		border: 0;
 		color: #D8D8DD;
-		height: 37px;
-		line-height: 37px;
+		height: 30px;
+		line-height: 30px;
 		width: 100%;
 		text-align: center;
 		cursor: pointer;
