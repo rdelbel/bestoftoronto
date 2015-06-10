@@ -53,7 +53,7 @@ body {
 	background-color: #96A6A7;
 }
 
-@media(min-width:76px){
+@media(min-width:768px){
 
 #control{
 	height:100%;
