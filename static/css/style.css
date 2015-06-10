@@ -7,8 +7,7 @@ html, body {
 	/*padding-right: 1px;*/
 	/*padding-left: 1px;*/
 	background-color: #6B7283;
-	border-left: 1px solid #6B7283;
-	border-right: 1px solid #6B7283;
+	
 
   }
 
@@ -75,15 +74,10 @@ body {
 
 @media(max-width:768px){
 
-#control{
-	/*position:fixed;*/
-	/*height:100px;*/
-	/*width:100%;*/
-}
 
-
-#map-canvas{
-	/*height: 100%;*/
+html,body{
+	border-left: 2px solid #6B7283;
+	border-right: 2px solid #6B7283;
 }
 
 }
