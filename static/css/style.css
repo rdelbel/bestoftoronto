@@ -44,6 +44,9 @@ body {
 
 
 #map-canvas{
+	/*margin-top: 125px;*/
+	/*position:static;*/
+
 	height: 100%;
 	width:100%;
 }
@@ -72,6 +75,12 @@ body {
 
 }
 
+@media(max-width:768px){
+	#map-canvas{
+		margin-top: 125px;
+		height: calc(100% - 125px);
+	}
+}
 
 
 
