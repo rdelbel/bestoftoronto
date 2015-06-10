@@ -14,8 +14,9 @@ div{
 
 
 body {
+	
 	font-family: "Open Sans", sans-serif;
-	font-size: 15px;
+	/*font-size: 15px;*/
 	
 
 }
@@ -24,6 +25,7 @@ body {
 	background-color: #3C5E67;
 	padding: 0px;
 	text-align: center;
+	color: #D8D8DD;
 }
 
 #control input[type=text]{
@@ -32,6 +34,7 @@ body {
 		font-size: 24px;*/
 		background-color: #3C5E67;
 		border: 1px solid #EA6D63;
+		color: #D8D8DD;
 	}
 
 
@@ -42,7 +45,9 @@ body {
 
 .zipSearch{
 	width: 100%;
+	color: #D8D8DD;
 }
+
 
 .learnButton{
 	width:100%;
