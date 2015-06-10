@@ -95,11 +95,11 @@ function update_map(closestPlaces,userLatLon){
 			,title:theClosestPlace.name
 			,html:
 					'<div class="markerPop">' +
-					'<h1>' + theClosestPlace.result.name +'</h1>' +
-					'<h3>' + theClosestPlace.result.address + ' (' +
-					 (theClosestPlace.distance/1000).toFixed(2) + 'KM) </h3>' +
+					'<h3>' + theClosestPlace.result.name +'</h3>' +
+					'<h4>' + theClosestPlace.result.address + ' (' +
+					 (theClosestPlace.distance/1000).toFixed(2) + 'KM) </h4>' +
 
-					'<h3>' + theClosestPlace.result.list_name +'</h3>' +
+					'<h5>' + theClosestPlace.result.list_name +'</h5>' +
 					
 					'<p>' + theClosestPlace.result.description + '</p>' +
 					'<p>' + theClosestPlace.result.website +'</p>' +
@@ -203,7 +203,8 @@ function update_map(closestPlaces,userLatLon){
      
       
     } else {
-      alert('Geocode was not successful for the following reason: ' + status);
+      // alert('Geocode was not successful for the following reason: ' + status);
+      alert('No result, Please try again!');
       // var userLatLon=postalCodes[userPostalCode]
     }
 
