@@ -60,6 +60,18 @@ $(document).ready(function(){
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
 
 
+	var center;
+function calculateCenter() {
+  center = map.getCenter();
+}
+google.maps.event.addDomListener(map, 'idle', function() {
+  calculateCenter();
+});
+google.maps.event.addDomListener(window, 'resize', function() {
+  map.setCenter(center);
+});
+
+
 function codeAddress() {
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
