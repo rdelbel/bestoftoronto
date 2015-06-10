@@ -192,9 +192,15 @@ function update_map(closestPlaces,userLatLon){
 		console.log('User input',userPostalCode)
 
 		var geocoder = new google.maps.Geocoder();
-	
 
-	geocoder.geocode( { 'address': userPostalCode, 'region':'ca'}, function(results, status) {
+
+
+
+	bottomLeftBound =  new google.maps.LatLng(43.600284,-79.554749);
+	topRightBound =  new google.maps.LatLng(43.971075,-79.194946);
+	latlngbound= new google.maps.LatLngBounds(bottomLeftBound,topRightBound)
+
+	geocoder.geocode( { 'address': userPostalCode, 'region':'ca', 'bounds':latlngbound }, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
 
     	var userLatLon={'lat':results[0].geometry.location.A ,
