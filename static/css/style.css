@@ -45,6 +45,7 @@ body {
 
 #map-canvas{
 	height: 100%;
+	width:100%;
 }
 
 
@@ -72,13 +73,5 @@ body {
 }
 
 
-@media(max-width:768px){
 
-
-html,body{
-	border-left: 5px solid #6B7283;
-	border-right: 5px solid #6B7283;
-}
-
-}
 
