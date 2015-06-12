@@ -76,6 +76,8 @@ function codeAddress() {
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
+    	console.log('test')
+    	console.log(results)
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
           map: map,
@@ -140,7 +142,7 @@ function update_map(closestPlaces,userLatLon){
 			,title:theClosestPlace.result.name
 			,html:
 					'<div class="markerPop">' +
-					'<h1>Your Location</h1>' +
+					'<h4>Your Location</h4>' +
 					
 					'</div>'
 		});
