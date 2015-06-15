@@ -32,7 +32,10 @@ $(document).ready(function(){
 		//End Geo location
 
 
-	//map options
+
+
+//map options
+
 	var mapOptions = {
 		zoom:13,
 		// maxZoom: 15,
@@ -47,7 +50,6 @@ $(document).ready(function(){
 			position: google.maps.ControlPosition.RIGHT_CENTER
 		},
 		scaleControl: false
-
 	};
 
 	//Adding infowindow option
@@ -58,6 +60,27 @@ $(document).ready(function(){
 	//Fire up Google maps and place inside the map-canvas div
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+
+		//autocomplete options
+
+	autocompleteBottomLeftBound =  new google.maps.LatLng(43.600284,-79.554749);
+	autocompleteTopRightBound =  new google.maps.LatLng(43.971075,-79.194946);
+	var autocompleteLatLngbound= new google.maps.LatLngBounds(autocompleteBottomLeftBound,
+		autocompleteTopRightBound)
+
+	var autocompleteOptions={
+		bounds: autocompleteLatLngbound
+	};
+
+//push autocompelte result to text
+	var autocompleteInput = document.getElementById('textZip');
+	map.controls[google.maps.ControlPosition.TOP_LEFT].push(autocompleteInput);
+	
+		//create autocomplete object	
+	var autocomplete = new google.maps.places.Autocomplete(autocompleteInput,
+		autocompleteOptions);
+
+
 
 
 	var center;
