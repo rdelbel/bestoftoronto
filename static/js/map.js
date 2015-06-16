@@ -210,9 +210,13 @@ function update_map(closestPlaces,userLatLon){
 }
 
 
+ google.maps.event.addListener(autocomplete, 'place_changed', function() {
+       
+    // });  
 
 
-	$('#chooseZip').submit(function(){ //bind function to submit event of form
+
+	// $('#chooseZip').submit(function(){ //bind function to submit event of form
 
 		//delete old markers
 		for (var i = 0; i < tempMarkerHolder.length; i++ ) {

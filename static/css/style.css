@@ -33,14 +33,7 @@ body {
 	/*position:fixed;*/
 }
 
-#control input[type=text]{
-/*		width: 100%;
-		height: 40px;
-		font-size: 24px;*/
-		background-color: #566472;
-		border: 1px solid #EA6D63;
-		color: #D8D8DD;
-	}
+
 
 
 #map-canvas{
@@ -49,6 +42,10 @@ body {
 	display: block;
 	height: 100%;
 	width:100%;
+	margin-top: 57px;
+	height: calc(100% - 57px);
+	/*margin-top: 125px;*/
+	/*height: calc(100% - 125px);*/
 }
 
 
@@ -67,12 +64,15 @@ body {
 	background-color: #96A6A7;
 }
 
+/*
+
 @media(min-width:768px){
 
 #control{
 	height:100%;
 	width:20%;
 }
+
 
 #map-canvas{
 		/*margin-left: 500px;*/
@@ -90,5 +90,5 @@ body {
 	}
 }
 
-
+*/
 
