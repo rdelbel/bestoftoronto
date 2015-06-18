@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+   $('#textZip').attr('type','text');
 	var infowindow = null;
 	var pos;
 	var userCords;
@@ -80,7 +80,12 @@ $(document).ready(function(){
 	var autocomplete = new google.maps.places.Autocomplete(autocompleteInput,
 		autocompleteOptions);
 
-
+//
+	var pinColor = "00B300";
+	var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+	new google.maps.Size(21, 34),
+	new google.maps.Point(0,0),
+	new google.maps.Point(10, 34));
 
 
 	var center;
@@ -162,6 +167,7 @@ function update_map(closestPlaces,userLatLon){
 		allMarkers = new google.maps.Marker({
 			position:myLatLng
 			,map:map
+			,icon:pinImage
 			,title:theClosestPlace.result.name
 			,html:
 					'<div class="markerPop">' +

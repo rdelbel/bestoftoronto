@@ -6,7 +6,7 @@ html, body {
 	margin: 0px;
 	/*padding-right: 1px;*/
 	/*padding-left: 1px;*/
-	background-color: #566472;
+	/*background-color: #566472;*/
 	
 
   }
@@ -49,19 +49,22 @@ body {
 }
 
 
+
+/*
 .zipSearch{
 	width: 100%;
 	color: #D8D8DD;
 }
+*/
 
-
-.learnButton{
+/*.learnButton{
 	width:100%;
 	background-color: #EA6D63;
 }
-
+*/
 #text-zip{
-	background-color: #96A6A7;
+	/*background-color: #96A6A7;*/
+	display:none;
 }
 
 /*
